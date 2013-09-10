@@ -1,21 +1,52 @@
+html {
+  font-size: 62.5%;
+}
 body {
   background-color: #fff;
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
+  font-size: 1.3rem;
   line-height: 18px;
 }
 
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
+  font-size: 1.3rem;
   line-height: 18px;
+}
+
+h1 {
+  font-size: 38px;
+  font-size: 3.8rem;
+}
+
+h2 {
+  font-size: 32px;
+  font-size: 3.2rem;
+}
+
+h3 {
+  font-size: 24px;
+  font-size: 2.4rem;
+}
+
+h4 {
+  font-size: 18px;
+  font-size: 1.8rem;
+}
+
+h5 {
+  font-size: 14px;
+  font-size: 1.4rem;
 }
 
 pre {
   background-color: #eee;
   padding: 10px;
   font-size: 11px;
+  font-size: 1.1rem;
 }
 
 a {
@@ -33,6 +64,16 @@ div {
   &.field, &.actions {
     margin-bottom: 10px;
   }
+}
+
+.item_name {
+background-color: gray;
+display: inline-block;
+} 
+
+.shadowed {
+  -webkit-filter: drop-shadow(3px 2px 1px rgba(155,155,200,0.7));
+  
 }
 
 #notice {
