@@ -13,8 +13,15 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to product_path(@product), notice: 'Review created successfully'
     else
-      render :action => :show
+      redirect_to product_path(@product), notice: 'You have already made a review on this product!'
     end
+
+    # if @review.valid?
+    #   @review.save redirect_to product_path(@product), notice: 'Review created successfully'
+    # else
+    #   render "products/show"
+    # end
+
   end
 
   def destroy

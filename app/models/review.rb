@@ -1,5 +1,5 @@
 class Review < ActiveRecord::Base
-  # attr_accessible :comment, :product_id, :user_id
   belongs_to :user
   belongs_to :product
+  validates_uniqueness_of :user_id, :scope => [:product_id]
 end
