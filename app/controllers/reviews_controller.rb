@@ -16,17 +16,12 @@ class ReviewsController < ApplicationController
       redirect_to product_path(@product), notice: 'You have already made a review on this product!'
     end
 
-    # if @review.valid?
-    #   @review.save redirect_to product_path(@product), notice: 'Review created successfully'
-    # else
-    #   render "products/show"
-    # end
-
   end
 
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
+    redirect_to product_path(@product)
   end
 
   private
