@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130910231406) do
+ActiveRecord::Schema.define(version: 20130916033843) do
+
+  create_table "pictures", force: true do |t|
+    t.string   "description"
+    t.string   "content_type"
+    t.string   "filename"
+    t.binary   "binary_data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "products", force: true do |t|
     t.string   "name"

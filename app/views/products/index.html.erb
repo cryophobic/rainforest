@@ -1,18 +1,7 @@
-<h1>Listing products</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-      <% @products.each do |product| %>      
-        <p><%= link_to product.name, product_path(product) %></p>
+      <% @products.each do |product| %>   
+        <div class="product_item"   
+          <p><%= link_to product.name, product_path(product) %></p>
+        </div>
       <% end %>
 
-<br>
-
-<%= link_to 'Add New Product', new_product_path %>
+<%= link_to 'Add A New Product', new_product_path %>

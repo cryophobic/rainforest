@@ -23,6 +23,12 @@
     <%= f.label :price_in_cents %><br />
     <%= f.number_field :price_in_cents %>
   </div>
+  <div class ="field">
+    <#% form_for(:picture, @product, :url=>{:action=>'create'}, :html=>{:multipart=>true}) do |f| %>
+    <#%= f.file_field :picture %>
+    <#%= f.text_field :description %>
+    <#% end %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
