@@ -1,61 +1,62 @@
 <h1 class="item_name shadowed"><%= @product.name %></h1>
 <h3><%= @product.formatted_price %></h3>
 <p><h4><%= @product.description %></h4></p>
+<img src="<%= @product.picture %>">
 
 
 <% if current_user %>
+	<div class="reviews">
+	  <h3>Reviews</h3>
 
-  <h3>Reviews</h3>
+	  <p>Reviews for <%= @product.name %></p>
 
-  <p>Reviews for <%= @product.name %></p>
+	  <% @product.reviews.each do |review| %>
+	    <p>
+	      <%= review.comment %>
+	      <br>
+	      <% if review.user != nil %>
+	        <em> by <%= review.user.name %></em>
+	        Added on: <%= review.created_at %>
+	      <% end %>
 
-  <% @product.reviews.each do |review| %>
-    <p>
-      <%= review.comment %>
-      <br>
-      <% if review.user != nil %>
-        <em> by <%= review.user.name %></em>
-        Added on: <%= review.created_at %>
-      <% end %>
+	      <% if review.user == current_user %>
+	      	<%= button_to "delete", product_review_path(@product, review), :action => 'destroy', :method => :delete, :confirm => "Are you sure you want to do that?" %>
+	      	
+	      <% end %>
 
-      <%#= params.inspect %>
-      <% if review.user == current_user %>
-      	<%= button_to "delete", product_review_path(@product, review), :action => 'destroy', :method => :delete, :confirm => "Are you sure you want to do that?" %>
-      	
-      <% end %>
+	    </p>
+	  <% end %>
 
-    </p>
-  <% end %>
+		<% unless current_user.reviews.where(product_id: @product.id).any? %>
+			<h4>New Review</h4>
 
-	<% unless current_user.reviews.where(product_id: @product.id).any? %>
-		<h4>New Review</h4>
+			  <%= form_for([@product, @review]) do |f| %>
+			    <% if @review.errors.any? %>
+			      <div id="error_explanation">
+			        <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
 
-		  <%= form_for([@product, @review]) do |f| %>
-		    <% if @review.errors.any? %>
-		      <div id="error_explanation">
-		        <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+			        <ul>
+			        <% @review.errors.full_messages.each do |msg| %>
+			          <li><%= msg %></li>
+			        <% end %>
+			        </ul>
+			      </div>
+			    <% end %>
 
-		        <ul>
-		        <% @review.errors.full_messages.each do |msg| %>
-		          <li><%= msg %></li>
-		        <% end %>
-		        </ul>
-		      </div>
-		    <% end %>
+			    <div class="field">
+			      <%= f.label :comment %><br />
+			      <%= f.text_area :comment %>
+			    </div>
+			    <div class="actions">
+			      <%= f.submit %>
+			    </div>
 
-		    <div class="field">
-		      <%= f.label :comment %><br />
-		      <%= f.text_area :comment %>
-		    </div>
-		    <div class="actions">
-		      <%= f.submit %>
-		    </div>
+			  <% end %>
+		<% end %>
 
-		  <% end %>
-	<% end %>
-
-	<% else %>
-  <p>Please <%= link_to "log in", new_session_path %> to add a review.</p> 
+		<% else %>
+	  <p>Please <%= link_to "log in", new_session_path %> to add a review.</p> 
+	</div>
 <% end %>
 
 

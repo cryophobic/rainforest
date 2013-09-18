@@ -11,16 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130916033843) do
-
-  create_table "pictures", force: true do |t|
-    t.string   "description"
-    t.string   "content_type"
-    t.string   "filename"
-    t.binary   "binary_data"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(version: 20130917195107) do
 
   create_table "products", force: true do |t|
     t.string   "name"
@@ -28,6 +19,7 @@ ActiveRecord::Schema.define(version: 20130916033843) do
     t.integer  "price_in_cents"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "picture"
   end
 
   create_table "reviews", force: true do |t|
