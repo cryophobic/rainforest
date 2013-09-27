@@ -9,7 +9,11 @@ Rainforest::Application.routes.draw do
   resources :products do
     resources :reviews, :except => [:index, :show]
   end
+  root :to => "products#index"
+
   resources :users, :only => [:new, :create]
   resources :sessions, :only => [:new, :create, :destroy]
 end
+
+
   

@@ -10,10 +10,14 @@ class ReviewsController < ApplicationController
     @review = @product.reviews.build(review_params)
     @review.user_id = current_user.id
 
-    if @review.save
-      redirect_to product_path(@product), notice: 'Review created successfully'
-    else
-      redirect_to product_path(@product), notice: 'You have already made a review on this product!'
+    respond_to do |format|
+      if @review.save
+        format.html { redirect_to product_path(@product.id), notice: 'Review created successfully' }
+        format.js {} # This will look for /views/reviews/create.js.erb
+      else
+        format.html { render "products/show", notice: 'You have already made a review on this product!'  }
+        format.js {} # This will look for /views/reviews/create.js.erb
+      end
     end
 
   end
