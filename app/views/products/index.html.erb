@@ -1,7 +1,7 @@
-      <% @products.each do |product| %>   
-        <div class="product_item"   
-          <p><%= link_to product.name, product_path(product) %></p>
-        </div>
-      <% end %>
+  <% @products.each do |product| %>   
+    <div class="product_item">
+      <p><%= link_to product.name, product_path(product) %></p>
+    </div>
+  <% end %>
 
 <%= link_to 'Add A New Product', new_product_path %>
