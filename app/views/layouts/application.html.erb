@@ -8,7 +8,7 @@
   </head>
   <body>
     <div id="header">
-      <div class="logo"><%= link_to "Rainforest", products_path %></div> 
+      <div class="logo"><%= link_to "Rainforest", root_path %></div> 
       <p class="userinfo">  
         <% if current_user %>
           Signed in as <%= current_user.name %> | <%= link_to "Log out", session_path("current"), :method => :delete %>
